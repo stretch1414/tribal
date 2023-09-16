@@ -1,0 +1,19 @@
+{
+  "name": "tribal",
+  "version": "0.0.1",
+  "description": "An initial framework boilerplate for projects",
+  "author": {
+    "name": "stretch1414"
+  },
+  "repository": {
+    "url": "https://github.com/stretch1414/tribal"
+  },
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
