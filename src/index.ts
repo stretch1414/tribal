@@ -1,19 +1,32 @@
-import express from "express";
-import { createSchema, createYoga } from "graphql-yoga";
-import { typeDefs } from "./schema/typeDefs.generated";
-import { resolvers } from "./schema/resolvers.generated";
-
-const app = express();
+import { createSchema, createYoga, useLogger } from "graphql-yoga";
+import { useGraphQlJit } from "@envelop/graphql-jit";
+import typeDefs from "./typeDefs";
+import resolvers from "./resolvers/index";
 
 const yoga = createYoga({
+  context: {},
   schema: createSchema({
     typeDefs,
     resolvers,
   }),
+  plugins: [useGraphQlJit()],
 });
 
-app.use(yoga.graphqlEndpoint, yoga);
+Bun.serve({
+  port: 4000,
+  fetch: async (request, server) => {
+    console.log(request.url);
+    if (request.url.includes("/graphql")) {
+      const response = await yoga.handleRequest(request, {});
 
-app.listen(4000, () => {
-  console.log("Running a GraphQL API server at http://localhost:4000/graphql");
+      return response;
+    }
+
+    return new Response(undefined, {
+      status: 400,
+      statusText: "404 - REST not supported",
+    });
+  },
 });
+
+console.log("Running a GraphQL API server at http://localhost:4000/graphql");
