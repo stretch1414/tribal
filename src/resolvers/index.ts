@@ -13,7 +13,7 @@ const resolversArray = await loadFiles(path.join(import.meta.dir, '*'), {
 	recursive: true,
 });
 
-export const typeDefs = mergeTypeDefs(typeDefsArray, {});
+export const typeDefs = mergeTypeDefs(typeDefsArray);
 export const resolvers = mergeResolvers(resolversArray);
 
 export default resolvers;
