@@ -1,0 +1,5 @@
+#import * from 'user.graphql'
+
+type Query {
+	_: Boolean
+}

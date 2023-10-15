@@ -1,13 +1,14 @@
-import { createSchema, createYoga } from 'graphql-yoga';
+import { createYoga } from 'graphql-yoga';
 import { useGraphQlJit } from '@envelop/graphql-jit';
-import { resolvers, typeDefs } from './resolvers';
+import { addResolversToSchema } from '@graphql-tools/schema';
+import resolvers from './resolvers';
+import schema from './typeDefs';
+
+const schemaWithResolvers = addResolversToSchema({ schema, resolvers });
 
 const yoga = createYoga({
 	context: {},
-	schema: createSchema({
-		typeDefs,
-		resolvers,
-	}),
+	schema: schemaWithResolvers,
 	plugins: [useGraphQlJit()],
 });
 

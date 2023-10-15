@@ -1,19 +1,18 @@
 import path from 'node:path';
-import { loadFiles } from '@graphql-tools/load-files';
-import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge';
+import { loadFilesSync } from '@graphql-tools/load-files';
+import { mergeResolvers } from '@graphql-tools/merge';
 
-const typeDefsArray = await loadFiles(path.join(import.meta.dir, '*'), {
-	ignoreIndex: true,
-	recursive: true,
-	exportNames: ['typeDefs'],
-});
+// We want to include files in all sub-directories, but not those
+// in this filder (specifically, this file)
+const resolversArray = loadFilesSync([
+	path.join(import.meta.dir, '**/*'),
+	path.join('!', import.meta.dir, '/*'),
+]);
 
-const resolversArray = await loadFiles(path.join(import.meta.dir, '*'), {
-	ignoreIndex: true,
-	recursive: true,
-});
+console.log(resolversArray);
 
-export const typeDefs = mergeTypeDefs(typeDefsArray);
-export const resolvers = mergeResolvers(resolversArray);
+const resolvers = mergeResolvers(resolversArray);
+
+console.log(resolvers);
 
 export default resolvers;
