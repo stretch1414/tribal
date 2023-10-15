@@ -1,7 +1,6 @@
-import { createSchema, createYoga, useLogger } from 'graphql-yoga';
+import { createSchema, createYoga } from 'graphql-yoga';
 import { useGraphQlJit } from '@envelop/graphql-jit';
-import typeDefs from './typeDefs.js';
-import resolvers from './resolvers/index.js';
+import { resolvers, typeDefs } from './resolvers';
 
 const yoga = createYoga({
 	context: {},
@@ -14,7 +13,7 @@ const yoga = createYoga({
 
 Bun.serve({
 	port: 4000,
-	async fetch(request, server) {
+	async fetch(request) {
 		console.log(request.url);
 		if (request.url.includes('/graphql')) {
 			const response = await yoga.handleRequest(request, {});

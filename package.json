@@ -1,32 +1,50 @@
 {
-  "name": "tribal",
-  "version": "0.0.1",
-  "author": "stretch1414",
-  "description": "An initial framework boilerplate for projects",
-  "repository": {
-    "url": "git+https://github.com/stretch1414/tribal.git"
-  },
-  "bugs": {
-    "url": "https://github.com/stretch1414/tribal/issues"
-  },
-  "homepage": "https://github.com/stretch1414/tribal#readme",
-  "license": "GPL-3.0",
-  "main": "src/index.ts",
-  "module": "src/index.ts",
-  "type": "module",
-  "scripts": {
-    "start": "bun src/index.ts"
-  },
-  "dependencies": {
-    "@envelop/graphql-jit": "^6.0.2",
-    "@graphql-tools/load-files": "^7.0.0",
-    "@graphql-tools/merge": "^9.0.0",
-    "graphql": "^16.8.0",
-    "graphql-yoga": "^4.0.4"
-  },
-  "devDependencies": {
-    "bun-types": "latest",
-    "typescript": "^5.0.0",
-    "xo": "^0.56.0"
-  }
+	"name": "tribal",
+	"version": "0.0.1",
+	"author": "stretch1414",
+	"description": "An initial framework boilerplate for projects",
+	"repository": {
+		"url": "git+https://github.com/stretch1414/tribal.git"
+	},
+	"bugs": {
+		"url": "https://github.com/stretch1414/tribal/issues"
+	},
+	"homepage": "https://github.com/stretch1414/tribal#readme",
+	"license": "GPL-3.0",
+	"main": "src/index.ts",
+	"module": "src/index.ts",
+	"type": "module",
+	"scripts": {
+		"generate": "graphql-codegen",
+		"lint": "bunx eslint --fix src/**",
+		"prepare": "husky install",
+		"prestart": "bun run generate",
+		"start": "bun src/index.ts"
+	},
+	"dependencies": {
+		"@envelop/graphql-jit": "^6.0.2",
+		"@graphql-tools/load-files": "^7.0.0",
+		"@graphql-tools/merge": "^9.0.0",
+		"graphql": "^16.8.0",
+		"graphql-tag": "^2.12.6",
+		"graphql-yoga": "^4.0.4"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "^5.0.0",
+		"@graphql-codegen/typescript": "^4.0.1",
+		"@graphql-codegen/typescript-resolvers": "^4.0.1",
+		"@typescript-eslint/eslint-plugin": "^6.7.4",
+		"@typescript-eslint/parser": "^6.7.4",
+		"bun-types": "latest",
+		"eslint": "^8.51.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-import-resolver-typescript": "^3.6.1",
+		"eslint-plugin-import": "^2.28.1",
+		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"eslint-plugin-prettier": "^5.0.0",
+		"husky": "^8.0.0",
+		"prettier": "^3.0.3",
+		"typescript": "^5.0.0"
+	}
 }

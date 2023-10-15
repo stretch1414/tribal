@@ -1,12 +1,19 @@
 import path from 'node:path';
 import { loadFiles } from '@graphql-tools/load-files';
-import { mergeResolvers } from '@graphql-tools/merge';
+import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge';
 
-const resolversArray2 = await loadFiles(path.join(import.meta.dir, '*'), {
+const typeDefsArray = await loadFiles(path.join(import.meta.dir, '*'), {
+	ignoreIndex: true,
+	recursive: true,
+	exportNames: ['typeDefs'],
+});
+
+const resolversArray = await loadFiles(path.join(import.meta.dir, '*'), {
 	ignoreIndex: true,
 	recursive: true,
 });
 
-const mergedResolvers2 = mergeResolvers(resolversArray2);
+export const typeDefs = mergeTypeDefs(typeDefsArray, {});
+export const resolvers = mergeResolvers(resolversArray);
 
-export default mergedResolvers2;
+export default resolvers;
