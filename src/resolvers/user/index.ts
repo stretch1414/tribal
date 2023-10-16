@@ -3,8 +3,6 @@ import { Resolvers } from '../../types';
 const resolvers: Resolvers = {
 	Query: {
 		user: () => {
-			console.log('huh?');
-
 			return {
 				id: '1',
 				email: 'test@example.com',
