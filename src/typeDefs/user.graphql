@@ -3,6 +3,7 @@ extend type Query {
 }
 type User {
 	id: ID!
+	email: String!
 	firstName: String!
 	lastName: String!
 	isAdmin: Boolean!

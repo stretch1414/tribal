@@ -7,6 +7,7 @@ const resolvers: Resolvers = {
 
 			return {
 				id: '1',
+				email: 'test@example.com',
 				firstName: 'test',
 				lastName: 'itWorks',
 				isAdmin: false,
