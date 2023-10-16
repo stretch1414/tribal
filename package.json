@@ -22,6 +22,7 @@
     "start": "bun src/index.ts"
   },
   "dependencies": {
+    "@envelop/generic-auth": "^6.1.1",
     "@envelop/graphql-jit": "^6.0.2",
     "@graphql-tools/graphql-file-loader": "^8.0.0",
     "@graphql-tools/load": "^8.0.0",
@@ -30,12 +31,14 @@
     "@graphql-tools/schema": "^10.0.0",
     "graphql": "^16.8.0",
     "graphql-tag": "^2.12.6",
-    "graphql-yoga": "^4.0.4"
+    "graphql-yoga": "^4.0.4",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
+    "@types/jsonwebtoken": "^9.0.3",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "bun-types": "latest",
