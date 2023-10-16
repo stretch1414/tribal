@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@envelop/generic-auth": "^6.1.1",
-    "@envelop/graphql-jit": "^6.0.2",
+    "@envelop/graphql-jit": "^7.0.0",
     "@graphql-tools/graphql-file-loader": "^8.0.0",
     "@graphql-tools/load": "^8.0.0",
     "@graphql-tools/load-files": "^7.0.0",
