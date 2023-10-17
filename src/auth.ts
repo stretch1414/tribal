@@ -6,7 +6,7 @@ import { YogaInitialContext } from 'graphql-yoga';
 import { User } from './types';
 
 // TODO - replace with env var, generate on deployed machine,
-// or pull from Cloud Storage?
+// or pull from Cloud Storage? Or just replace all of this with Auth0?
 const privatePem = readFileSync('./jwtRSA256-private.pem');
 const privateKey = crypto.createPrivateKey(privatePem);
 
