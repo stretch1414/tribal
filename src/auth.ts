@@ -1,7 +1,14 @@
+import crypto from 'crypto';
+import { readFileSync } from 'fs';
 import { password as argon2 } from 'bun';
 import jwt from 'jsonwebtoken';
 import { YogaInitialContext } from 'graphql-yoga';
 import { User } from './types';
+
+// TODO - replace with env var, generate on deployed machine,
+// or pull from Cloud Storage?
+const privatePem = readFileSync('./jwtRSA256-private.pem');
+const privateKey = crypto.createPrivateKey(privatePem);
 
 export const databaseByEmailSingleton: Record<string, User> = {
 	// 'test@example.com': {},
@@ -37,8 +44,8 @@ export const generateToken = (user: User) => {
 				id: user.id,
 				email: user.email,
 			},
-			Buffer.from(Bun.env.TOKEN_SECRET, 'base64'),
-			{ expiresIn: '6h' },
+			privateKey,
+			{ expiresIn: '6h', algorithm: 'RS256' },
 			(err, token) => {
 				if (err) {
 					reject(err);
@@ -54,17 +61,13 @@ export const verifyToken = (
 	token: string,
 ): Promise<string | jwt.JwtPayload | undefined> => {
 	return new Promise((resolve, reject) => {
-		jwt.verify(
-			token,
-			Buffer.from(Bun.env.TOKEN_SECRET, 'base64'),
-			(err, decoded) => {
-				if (err) {
-					reject(err);
-				} else {
-					resolve(decoded);
-				}
-			},
-		);
+		jwt.verify(token, privateKey, (err, decoded) => {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(decoded);
+			}
+		});
 	});
 };
 
