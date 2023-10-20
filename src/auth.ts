@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import { readFileSync } from 'fs';
+import { homedir } from 'os';
 import { password as argon2 } from 'bun';
 import jwt from 'jsonwebtoken';
 import { YogaInitialContext } from 'graphql-yoga';
@@ -7,7 +8,7 @@ import { User } from './types';
 
 // TODO - replace with env var, generate on deployed machine,
 // or pull from Cloud Storage? Or just replace all of this with Auth0?
-const privatePem = readFileSync('./jwtRSA256-private.pem');
+const privatePem = readFileSync(`${homedir()}/jwtRSA256-private.pem`);
 const privateKey = crypto.createPrivateKey(privatePem);
 
 export const databaseByEmailSingleton: Record<string, User> = {
