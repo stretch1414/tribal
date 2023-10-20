@@ -1,16 +1,36 @@
+import { GraphQLSchema } from 'graphql';
 import { createYoga } from 'graphql-yoga';
 import { useGenericAuth } from '@envelop/generic-auth';
 import { useGraphQlJit } from '@envelop/graphql-jit';
-import { addResolversToSchema } from '@graphql-tools/schema';
+import { mergeResolvers } from '@graphql-tools/merge';
+import { addResolversToSchema, mergeSchemas } from '@graphql-tools/schema';
+import { IResolvers } from '@graphql-tools/utils';
 import { resolveUserFn } from './auth';
-import resolvers from './resolvers';
-import schema from './typeDefs';
+import tribalSchema from './typeDefs';
+import tribalResolvers from './resolvers';
 
-export const createTribal = () => {
-	const schemaWithResolvers = addResolversToSchema({ schema, resolvers });
+const tribalContext = {
+	tribal: 'test',
+};
+
+interface TribalOptions {
+	schema: GraphQLSchema;
+	resolvers: IResolvers;
+	context: Record<string, unknown>;
+}
+
+export const createTribal = ({ schema, resolvers, context }: TribalOptions) => {
+	const mergedSchema = mergeSchemas({ schemas: [tribalSchema, schema] });
+	const mergedResolvers = mergeResolvers([tribalResolvers, resolvers]);
+	const mergedContext = { ...tribalContext, ...context };
+
+	const schemaWithResolvers = addResolversToSchema({
+		schema: mergedSchema,
+		resolvers: mergedResolvers,
+	});
 
 	const yoga = createYoga({
-		context: {},
+		context: mergedContext,
 		schema: schemaWithResolvers,
 		plugins: [
 			useGraphQlJit(),
