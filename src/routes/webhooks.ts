@@ -40,9 +40,9 @@ const stripeWebhook: RequestHandler = async (req, res, next) => {
 		// out of order, so we don't want to accidentally overwrite the status.
 		// Better to only process update events for that situation. If we offer
 		// a free tier in the future, this would likely change.
-	case 'customer.subscription.created':
-	case 'customer.subscription.updated':
-	case 'customer.subscription.deleted': {
+		case 'customer.subscription.created':
+		case 'customer.subscription.updated':
+		case 'customer.subscription.deleted': {
 			const customerId = stripeEvent.data.object.customer as string;
 			const user = await db.user.findFirst({
 				where: { stripeCustomerId: customerId },
@@ -53,7 +53,7 @@ const stripeWebhook: RequestHandler = async (req, res, next) => {
 					`No user found with stripeCustomerId ${customerId} to update subscription`,
 				);
 				res.status(400).json({
-				error: 'No user found to update subscription',
+					error: 'No user found to update subscription',
 				});
 				return;
 			}
@@ -66,7 +66,7 @@ const stripeWebhook: RequestHandler = async (req, res, next) => {
 			});
 			break;
 		}
-	case 'invoice.paid':
+		case 'invoice.paid':
 			// If we end up offering a free subscription tier, we may need to also
 			// handle this event to know who is a paying customer, etc.
 			break;
