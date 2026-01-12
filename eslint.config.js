@@ -1,12 +1,11 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import _import from 'eslint-plugin-import';
 import prettier from 'eslint-plugin-prettier';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import globals from 'globals';
 import tsParser from '@typescript-eslint/parser';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import js from '@eslint/js';
 import { FlatCompat } from '@eslint/eslintrc';
 
@@ -45,7 +44,7 @@ export default defineConfig([
 		},
 
 		rules: {
-			'no-restricted-types': 'warn',
+			'@typescript-eslint/no-restricted-types': 'warn',
 			eqeqeq: 'warn',
 			'import/no-unresolved': 'off',
 			indent: ['error', 'tab'],
