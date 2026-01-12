@@ -1,0 +1,25 @@
+services:
+  postgres:
+    # PG_VERSION=16.0-1.pgdg120+1
+    image: postgres
+    restart: always
+    networks:
+      - backend
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  adminer:
+    # ADMINER_VERSION=4.8.1
+    image: adminer
+    restart: always
+    networks:
+      - backend
+    ports:
+      - 8080:8080
+    environment:
+      - ADMINER_DESIGN=pepa-linha-dark
+
+networks:
+  backend:

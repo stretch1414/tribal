@@ -1,15 +1,17 @@
 {
 	"compilerOptions": {
-		"lib": ["ESNext"],
-		"module": "esnext",
-		"target": "esnext",
-		"moduleResolution": "bundler",
-		"moduleDetection": "force",
+		"outDir": "dist",
+		"sourceMap": true,
+		"lib": [
+			"ESNext"
+		],
+		"moduleResolution": "NodeNext",
+		"module": "NodeNext",
+		"target": "ESNext",
+		"esModuleInterop": true,
 		"allowImportingTsExtensions": true,
-		"noEmit": true,
 		"composite": true,
 		"strict": true,
-		"downlevelIteration": true,
 		"skipLibCheck": true,
 		"jsx": "react-jsx",
 		"allowSyntheticDefaultImports": true,
@@ -19,5 +21,7 @@
 			"bun-types" // add Bun global
 		]
 	},
-	"include": ["./src", "codegen.ts"]
+	"include": [
+		"./src"
+	]
 }
