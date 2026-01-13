@@ -14,7 +14,6 @@ const updateUser: RequestHandler = async (req, res, next) => {
 	const user = res.locals.user;
 	const body = z
 		.object({
-			notificationTime: z.string().optional(),
 			timezone: z.string().optional(),
 			isOnboarded: z.boolean().optional(),
 		})
@@ -34,8 +33,7 @@ const deleteUser: RequestHandler = async (req, res, next) => {
 	// TODO: Do we want to soft delete the user and just cancel the
 	// subscription instead? Or maybe we only use this whenever a user
 	// specifically chooses to delete their account. We could have a
-	// separate flow for just cancelling their subscription. If we do
-	// keep hard delete, we should allow them to export their scrawls.
+	// separate flow for just cancelling their subscription.
 	await db.user.delete({
 		where: { id: user.id },
 	});
