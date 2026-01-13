@@ -1,5 +1,6 @@
 import logger from '../lib/logger.js';
 import resend from '../lib/resend.js';
+import { FROM_EMAIL } from './lib.ts';
 import {
 	renderPasswordResetEmail,
 	renderVerifyEmailEmail,
@@ -15,7 +16,7 @@ export async function sendPasswordReset(input: {
 
 	const response = await resend.emails.send({
 		to: input.email,
-		from: 'daily@scrawlit.com',
+		from: FROM_EMAIL,
 		subject: 'Reset Password',
 		html: htmlBody,
 		text: textBody,
@@ -33,7 +34,7 @@ export async function sendVerifyEmail(input: { email: string; code: string }) {
 
 	const response = await resend.emails.send({
 		to: input.email,
-		from: 'daily@scrawlit.com',
+		from: FROM_EMAIL,
 		subject: 'Reset Password',
 		html: htmlBody,
 		text: textBody,

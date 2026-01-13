@@ -39,7 +39,7 @@ export function PasswordResetEmail({ code }: PasswordResetEmailProps) {
 					{/* Will need to have the logo hosted in cloud storage somewhere */}
 					<Img
 						src={`${process.env.WEB_URL}/logo.png`}
-						alt="scrawl it logo"
+						alt="logo"
 						width={206}
 						height={89}
 						style={logo}

@@ -3,6 +3,7 @@
 export const APP_NAME = 'Test';
 export const WEBSITE_URL = 'www.example.com';
 export const COMPANY_ADDRESS = '123 Example St';
+export const FROM_EMAIL = 'test@example.com';
 
 export enum Color {
 	BLACK = '#000000',
