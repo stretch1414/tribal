@@ -32,6 +32,15 @@ if you have access.
 cp .env.example .env`
 ```
 
+For authentication, you'll need a private key public key pair for generating
+and validating JWTs. We generate the public key on the server from the given
+private key. More information can be found [here](https://techdocs.akamai.com/iot-token-access-control/docs/generate-rsa-keys).
+
+```sh
+# Generate the RSA private key
+openssl genrsa -out jwtRSA256-private.pem 2048
+```
+
 Next, you can spin up the local database services with Docker compose.
 
 ```sh

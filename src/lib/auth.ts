@@ -9,7 +9,8 @@ import logger from './logger.js';
 
 // TODO - replace with env var, generate on deployed machine,
 // or pull from Cloud Storage? Or just replace all of this with Auth0?
-const privatePem = readFileSync(`${homedir()}/jwtRSA256-private.pem`);
+const PEM_PATH = process.env.PEM_PATH! || `${homedir()}/jwtRSA256-private.pem`;
+const privatePem = readFileSync(PEM_PATH);
 const privateKey = crypto.createPrivateKey(privatePem);
 const publicKey = crypto.createPublicKey(privateKey);
 
