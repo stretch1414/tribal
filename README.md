@@ -54,8 +54,8 @@ bun i
 ```
 
 After the dependencies are installed, it's time to get the database setup. The following
-command will both generate the [Prisma](https://orm.drizzle.team/) client and
-migrate the Postgres database running in Docker to include our schema and tables.
+command will both generate the Prisma client and migrate the Postgres database running
+in Docker to include our schema and tables.
 
 ```sh
 bun run db:migrate
