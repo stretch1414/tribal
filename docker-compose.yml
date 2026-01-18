@@ -1,7 +1,7 @@
 services:
   postgres:
-    # PG_VERSION=16.0-1.pgdg120+1
-    image: postgres
+    # PG_VERSION=18.1
+    image: postgres:18.1
     restart: always
     networks:
       - backend
@@ -11,8 +11,8 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
   adminer:
-    # ADMINER_VERSION=4.8.1
-    image: adminer
+    # ADMINER_VERSION=5.4.1
+    image: adminer:5.4.1
     restart: always
     networks:
       - backend
