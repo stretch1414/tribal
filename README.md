@@ -113,11 +113,6 @@ The primary backing database for this project is using [PostgreSQL](https://www.
 We are using [Prisma](https://www.prisma.io/) as our object-relational mapping
 (ORM) tool.
 
-### Bun
-
-We are using the [Bun]() runtime in place of Node.js. Should this prove to cause
-issues at some point, we'll just revert back to using Node.js.
-
 ### Express
 
 The primary HTTP server implementation. [Express](https://expressjs.com/) is a
@@ -136,9 +131,14 @@ for deployment in any [OCI-compliant container system](https://opencontainers.or
 
 ### Stripe
 
-We are using Stripe as our payment processor. You will need some environment
-variables for running things locally. See the `.env.example` for the list.
-Be sure to use the "test" keys.
+We are using [Stripe](https://www.stripe.com) as our payment processor. You will
+need some environment variables for running things locally. See the `.env.example`
+for the list. Be sure to use the "test" keys.
+
+### Resend
+
+We are using [Resend](https://www.resend.com) as our email client. You will need
+the API key.
 
 ### Webhooks
 
