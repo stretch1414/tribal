@@ -25,13 +25,14 @@
 		"db:seed": "bunx prisma db seed"
 	},
 	"dependencies": {
-		"@prisma/adapter-pg": "^7.2.0",
+		"@prisma/adapter-pg": "7.2.0",
 		"@prisma/client": "7.2.0",
 		"@react-email/components": "1.0.4",
 		"@react-email/render": "2.0.2",
 		"argon2": "0.44.0",
 		"close-with-grace": "2.4.0",
 		"cors": "2.8.5",
+		"dayjs": "1.11.19",
 		"dotenv": "17.2.3",
 		"express": "5.2.1",
 		"jsonwebtoken": "9.0.3",
