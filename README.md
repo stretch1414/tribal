@@ -76,24 +76,8 @@ bun run dev
 If you see the following (or some variation of it), then you are good to go!
 
 ```sh
-2:38:05 PM - Starting compilation in watch mode...
-[0]
-[1] Listening on port 3000
-[0]
-[0] 2:38:08 PM - Found 0 errors. Watching for file changes.
-[1] Restarting 'dist/server.js'
-[1] [14:38:08.524] INFO (57743): SIGTERM signal received: initiating shutdown sequence
-[1] [14:38:08.525] INFO (57743): Closing HTTP server
-[1] Listening on port 3000
-```
-
-If you need to diagnose any issues with this process, you can run the Typescript
-build process separately from the node process. This won't clear the terminal
-so you can debug appropriately. Just run the following commands:
-
-```sh
-npm run build
-npm run start
+$ bun --watch server.ts | pino-pretty
+[11:05:59.162] INFO (225798): Listening on port 3000
 ```
 
 ## Tech Stack
