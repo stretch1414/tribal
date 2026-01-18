@@ -3,8 +3,7 @@ import { readFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
-import { type User } from '@prisma/client';
-import db from './db.js';
+import db, { type User } from './db.js';
 import { AuthenticationError } from './errors.js';
 import logger from './logger.js';
 

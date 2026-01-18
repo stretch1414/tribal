@@ -1,5 +1,5 @@
 import { ErrorRequestHandler } from 'express';
-import { Prisma } from '@prisma/client';
+import { Prisma } from './db.js';
 import logger from './logger.js';
 
 class RequestError extends Error {
