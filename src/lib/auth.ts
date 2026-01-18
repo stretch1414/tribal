@@ -22,7 +22,7 @@ export const generatePassword = async (password: string) => {
 
 		return passwordHash;
 	} catch (err) {
-		console.error('Error generating password', err);
+		logger.error({ msg: 'Error generating password', err });
 	}
 };
 
@@ -37,7 +37,7 @@ export const verifyPassword = async (
 
 		return verified;
 	} catch (err) {
-		console.error('Error verifying password', err);
+		logger.error({ msg: 'Error verifying password', err });
 	}
 };
 
@@ -79,8 +79,7 @@ export const getUserFromToken = async (token: string) => {
 	const decodedToken = await verifyToken(token);
 
 	if (!decodedToken || typeof decodedToken === 'string') {
-		logger.error(decodedToken);
-		logger.error('What do we do here?');
+		logger.error({ msg: 'What do we do here?', decodedToken });
 		throw new AuthenticationError('Invalid token');
 	}
 
@@ -93,7 +92,7 @@ export const getUserFromToken = async (token: string) => {
 
 		return user;
 	} catch (err) {
-		logger.error('Error getting user from token', err);
+		logger.error({ msg: 'Error getting user from token', err });
 		throw new AuthenticationError('Invalid token');
 	}
 };

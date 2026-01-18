@@ -31,7 +31,7 @@ const stripeWebhook: RequestHandler = async (req, res, next) => {
 		throw err;
 	}
 
-	logger.info(`Stripe webhook event: ${stripeEvent.type}`);
+	logger.info({ msg: `Stripe webhook event: ${stripeEvent.type}` });
 
 	switch (stripeEvent.type) {
 		// TODO: I think we don't want create to do anything here, as when a new
@@ -49,9 +49,9 @@ const stripeWebhook: RequestHandler = async (req, res, next) => {
 			});
 
 			if (!user) {
-				logger.error(
-					`No user found with stripeCustomerId ${customerId} to update subscription`,
-				);
+				logger.error({
+					msg: `No user found with stripeCustomerId ${customerId} to update subscription`,
+				});
 				res.status(400).json({
 					error: 'No user found to update subscription',
 				});
@@ -71,7 +71,7 @@ const stripeWebhook: RequestHandler = async (req, res, next) => {
 			// handle this event to know who is a paying customer, etc.
 			break;
 		default:
-			logger.debug(`Unhandled Stripe event: ${stripeEvent.type}`);
+			logger.debug({ msg: `Unhandled Stripe event: ${stripeEvent.type}` });
 	}
 
 	res.status(200).json({ data: 'Stripe webhook processed' });

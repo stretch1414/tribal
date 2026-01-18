@@ -42,7 +42,7 @@ app.get('/healthz', (req, res) => {
 		if (err instanceof Error) {
 			healthcheck.message = `${err.name}: ${err.message}`;
 		} else {
-			logger.error(err, 'Unknown healthcheck error');
+			logger.error({ msg: 'Unknown healthcheck error', err });
 			healthcheck.message = 'Unknown healthcheck error';
 		}
 		res.status(503).json(healthcheck);

@@ -50,7 +50,7 @@ const signup: RequestHandler = async (req, res, next) => {
 	const hashedPassword = await generatePassword(password);
 
 	if (!hashedPassword) {
-		logger.error('Error hashing password for signup', { email });
+		logger.error({ msg: 'Error hashing password for signup', email });
 		throw new InternalServerError();
 	}
 
