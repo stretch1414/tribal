@@ -126,7 +126,7 @@ the API key.
 
 ### Webhooks
 
-We have webhooks for Clerk and Stripe. To test those, you'll need to use
+We have webhooks for Stripe. To test those, you'll need to use
 [ngrok](https://ngrok.com/docs) or another tunneling tool of your choice.
 You will also need to make sure that you have the secrets for each service
 in your `.env` file.
