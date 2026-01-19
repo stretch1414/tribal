@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { homedir } from 'node:os';
+import path from 'node:path';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
 import db, { type User } from './db.js';
@@ -9,7 +10,9 @@ import logger from './logger.js';
 
 // TODO - replace with env var, generate on deployed machine,
 // or pull from Cloud Storage? Or just replace all of this with Auth0?
-const PEM_PATH = process.env.PEM_PATH! || `${homedir()}/jwtRSA256-private.pem`;
+const PEM_PATH = process.env.PEM_PATH
+	? path.resolve(process.env.PEM_PATH)
+	: `${homedir()}/jwtRSA256-private.pem`;
 const privatePem = readFileSync(PEM_PATH);
 const privateKey = crypto.createPrivateKey(privatePem);
 const publicKey = crypto.createPublicKey(privateKey);

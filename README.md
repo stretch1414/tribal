@@ -29,7 +29,7 @@ service, you can get the value from another engineer or from the service directl
 if you have access.
 
 ```sh
-cp .env.example .env`
+cp .env.example .env
 ```
 
 For authentication, you'll need a private key public key pair for generating
