@@ -1,10 +1,10 @@
 import logger from '../lib/logger.js';
 import resend from '../lib/resend.js';
-import { FROM_EMAIL } from './lib.ts';
+import { FROM_EMAIL } from './lib.js';
 import {
 	renderPasswordResetEmail,
 	renderVerifyEmailEmail,
-} from './templates/index.ts';
+} from './templates/index.js';
 
 export async function sendPasswordReset(input: {
 	email: string;

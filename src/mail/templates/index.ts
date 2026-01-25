@@ -1,2 +1,2 @@
-export * from './PasswordReset.tsx';
-export * from './VerifyEmail.tsx';
+export * from './PasswordReset.jsx';
+export * from './VerifyEmail.jsx';

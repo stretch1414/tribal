@@ -1,5 +1,5 @@
 import { Column, Link, Row, Text } from '@react-email/components';
-import { APP_NAME, Color, COMPANY_ADDRESS, WEBSITE_URL } from '../../lib.ts';
+import { APP_NAME, Color, COMPANY_ADDRESS, WEBSITE_URL } from '../../lib.js';
 
 export default function Footer() {
 	return (

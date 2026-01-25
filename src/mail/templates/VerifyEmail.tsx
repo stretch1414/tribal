@@ -14,8 +14,8 @@ import {
 	Text,
 } from '@react-email/components';
 import { render, toPlainText } from '@react-email/render';
-import { Color } from '../lib.ts';
-import Footer from './common/Footer.tsx';
+import { Color } from '../lib.js';
+import Footer from './common/Footer.jsx';
 
 export type VerifyEmailEmailProps = {
 	code: string;
