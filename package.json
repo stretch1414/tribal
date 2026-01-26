@@ -28,7 +28,7 @@
 		"@prisma/adapter-pg": "7.2.0",
 		"@prisma/client": "7.2.0",
 		"@react-email/components": "1.0.4",
-		"@react-email/render": "2.0.2",
+		"@react-email/render": "2.0.4",
 		"argon2": "0.44.0",
 		"close-with-grace": "2.4.0",
 		"cors": "2.8.5",
